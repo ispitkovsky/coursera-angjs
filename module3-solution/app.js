@@ -43,13 +43,13 @@ function NarrowItDownController(MenuSearchService) {
 	// };
 	
 	list.search = function() {
-		MenuSearchService.getMatchedMenuItems(list.searchTerm)
-		.then(function(result){
+		MenuSearchService.getMatchedMenuItems(list.searchTerm).then(function(result){
             list.found = result;
           });
   };
 
 	list.removeItem = function(index) {
+    console.log("'this' is: ", this);
 		MenuSearchService.removeItem(index);
 	};
 }
@@ -63,37 +63,32 @@ function MenuSearchService($http, ApiBasePath) {
 	
 	service.getMatchedMenuItems = function(searchTerm) {
 		console.log('(service.getMatchedMenuItems) searchTerm=', searchTerm); 
-		if(!searchTerm){
-			foundItems = [];
-			return [];
-		}
-		else{
-			var response = $http({
-					method: "GET",
-					url: (ApiBasePath + "/menu_items.json")
-				})
-				.then(function (result) {
-					foundItems = []
+		var response = $http({
+				method: "GET",
+				url: (ApiBasePath + "/menu_items.json")
+			})
+			.then(function (result) {
+				foundItems = []
 
-					for (var i = 0; i < result.data.menu_items.length; i++) {
-						var name = result.data.menu_items[i].name;
-						if (name.toLowerCase().indexOf(searchTerm) !== -1) {
-							foundItems.splice(0, 0, result.data.menu_items[i]);
-						};
+				for (var i = 0; i < result.data.menu_items.length; i++) {
+					var name = result.data.menu_items[i].name;
+					if (searchTerm || name.toLowerCase().indexOf(searchTerm) !== -1) {
+						foundItems.splice(0, 0, result.data.menu_items[i]);
 					};
-					console.log('service.getMatchedMenuItems.foundItems=', foundItems);
-					return foundItems;
-				});
-			return response;
-		};
+				};
+				console.log('service.getMatchedMenuItems.foundItems=', foundItems);
+				return foundItems;
+			});
+		return response;
 	};
 	
 	service.getFound = function(){
 		return foundItems;
 	}
 	
-  service.removeItem = function (itemIndex) {
-		foundItems.splice(itemIndex, 1);
+  service.removeItem = function (index) {
+		console.log('foundItems.splice(itemIndex, 1); itemIndex=', index);
+		foundItems.splice(index, 1);
   };
 }
 
