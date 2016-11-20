@@ -72,8 +72,10 @@ function MenuSearchService($http, ApiBasePath) {
 
 				for (var i = 0; i < result.data.menu_items.length; i++) {
 					var name = result.data.menu_items[i].name;
-					if (searchTerm || name.toLowerCase().indexOf(searchTerm) !== -1) {
-						foundItems.splice(0, 0, result.data.menu_items[i]);
+					if (!(searchTerm === undefined || searchTerm.trim() === "")) {
+						if (name.toLowerCase().indexOf(searchTerm) !== -1) {
+							foundItems.splice(0, 0, result.data.menu_items[i]);
+						};
 					};
 				};
 				console.log('service.getMatchedMenuItems.foundItems=', foundItems);
