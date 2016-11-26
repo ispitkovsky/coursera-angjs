@@ -15,19 +15,19 @@ function MenuDataService($http, ApiBasePath) {
 			method: "GET",
 			url: (ApiBasePath + "/categories.json")
 		}).then(function(result){
-			console.log('service.getAllCategories.result=', result.data);
+			console.log('service.getAllCategories.result.data=', result.data);
 			return result.data;
 		});
 	}
 	
   service.getItemsForCategory = function (categoryShortName) {
 		//console.log('service.getItemsForCategory.categoryShortName=', categoryShortName);
-		var response = $http({
+		return $http({
 			method: "GET",
 			url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
 		}).then(function(result){
-			console.log('service.getItemsForCategory.result.data=', result.data);
-			return result.data;
+			console.log('service.getItemsForCategory.result.data.menu_items=', result.data.menu_items);
+			return result.data.menu_items;
 		});
   }
 	

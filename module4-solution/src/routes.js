@@ -24,9 +24,10 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     templateUrl: 'src/menuapp/templates/categories.template.html',
     controller: 'CategoriesController as catList',
     resolve: {
-      categories: ['MenuDataService', function (MenuDataService) {
-        return MenuDataService.getAllCategories();
-      }]
+      categories: ['MenuDataService', 
+				function (MenuDataService) {
+					return MenuDataService.getAllCategories();
+				}]
     }
   })
 
@@ -39,9 +40,9 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 				function (MenuDataService, $stateParams) {
 					//console.log('$stateParams', $stateParams);
 					return MenuDataService.getItemsForCategory($stateParams.categoryName);
-      }]
+				}]
 		}	
-	});
+	})
 }
 
 })();
