@@ -1,0 +1,6 @@
+<ul>
+	<h2>Categories:</h2>
+	<li ng-repeat="category in catList.categories" >
+		<a ui-sref="catDetails({categoryName: category.short_name})">{{ category.name }}, {{ category.short_name }}</a>
+	</li>
+</ul>
