@@ -1,0 +1,68 @@
+<div class="container">
+  <h2 id="menu-categories-title" class="text-center">Signup</h2>
+  <div class="text-center">
+		Please fill the required information regarding subscriber.
+  </div>
+
+	<fieldset>
+		<form name='submitForm' novalidate>
+<!-- 
+		 <input type="text" name = "firstName" ng-model="signupCtrl.firstName" placeholder="First name"
+			required
+			class="form-control">
+			<span
+				ng-if="submitForm.firstName.$error.required && submitForm.firstName.$touched">
+				"First name" is required
+			</span>
+			<br>
+
+		 <input type="text" name = "lastName" ng-model="signupCtrl.lastName" placeholder="Last name"
+			required
+		 class="form-control">
+			<span
+				ng-if="submitForm.lastName.$error.required && submitForm.lastName.$touched">
+				"Last name" is required
+			</span>
+			<br>
+
+		 <input type="email" name = "email" ng-model="signupCtrl.email" placeholder="Email (handle@domain)"
+			required
+		 class="form-control">
+			<span ng-if="submitForm.email.$invalid && submitForm.email.$touched">
+				Must be a valid email address: handle@domain format
+			</span>
+			<br>
+
+		 <input type="text" name = "phone" ng-model="signupCtrl.phone" placeholder="Phone ###-###-####"
+			required
+      pattern="(\d{3})-(\d{3})-(\d{4})"
+			class="form-control">
+			<span
+				ng-if="submitForm.phone.$invalid && submitForm.phone.$touched">
+           "Phone" must be in the format ###-###-####.
+			</span>
+			<br>
+-->
+		 <input type="text" name = "menuNumber" ng-model="signupCtrl.menuNumber" placeholder="Menu number: i.e. SP1"
+			required
+			class="form-control">
+ 			<span
+				ng-if="submitForm.menuNumber.$error.required&& submitForm.menuNumber.$touched">
+				"MenuNumber" is required
+			</span>
+			<br>
+
+<!-- //  menu number that's their favorite dish. (The menu number is the short_name attribute of each menu item).
+ -->
+			<div ng-if="signupCtrl.errorMessage()" class="error">Error: {{signupCtrl.errorMessage()}}</div>
+ 
+		 <button 
+			ng-disabled="submitForm.$invalid"
+			ng-click="signupCtrl.submit()" 
+			class="btn btn-default">Submit</button>
+		</form>
+
+		<div ng-show="signupCtrl.isSaved()">Your information has been saved</div>
+	</fieldset>
+	
+</div>
