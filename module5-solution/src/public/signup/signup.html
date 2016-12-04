@@ -6,7 +6,6 @@
 
 	<fieldset>
 		<form name='submitForm' novalidate>
-<!-- 
 		 <input type="text" name = "firstName" ng-model="signupCtrl.firstName" placeholder="First name"
 			required
 			class="form-control">
@@ -42,8 +41,8 @@
            "Phone" must be in the format ###-###-####.
 			</span>
 			<br>
--->
-		 <input type="text" name = "menuNumber" ng-model="signupCtrl.menuNumber" placeholder="Menu number: i.e. SP1"
+
+			<input type="text" name = "menuNumber" ng-model="signupCtrl.menuNumber" placeholder="Menu number: i.e. SP1"
 			required
 			class="form-control">
  			<span
@@ -52,8 +51,6 @@
 			</span>
 			<br>
 
-<!-- //  menu number that's their favorite dish. (The menu number is the short_name attribute of each menu item).
- -->
 			<div ng-if="signupCtrl.errorMessage()" class="error">Error: {{signupCtrl.errorMessage()}}</div>
  
 		 <button 

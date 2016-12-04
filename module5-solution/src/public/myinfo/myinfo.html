@@ -1,0 +1,35 @@
+    <link rel="stylesheet" href="css/info.css">
+
+<div class="container">
+	<h2 id="menu-categories-title" class="text-center">My Info</h2>
+	<div ng-show="myinfoCtrl.isSaved()" class="text-center">
+		<div class="menu-item-tile col-md-6">
+			<div class="caption">First name: {{myinfoCtrl.getInfo().firstName}}</div>
+			<div class="caption">Last name: {{myinfoCtrl.getInfo().lastName}}</div>
+			<div class="caption">Email: {{myinfoCtrl.getInfo().email}}</div>
+			<div class="caption">Phone: {{myinfoCtrl.getInfo().phone}}</div>
+			<br>
+			<div class="caption">Favorite dish:</div>
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="menu-item-photo">
+						<div>{{$ctrl.menuItem.short_name}}</div>
+						<img class="img-responsive" width="250" height="150" ng-src="{{myinfoCtrl.basePath}}/images/{{myinfoCtrl.getInfo().menuItem.short_name}}.jpg" alt="{{myinfoCtrl.getInfo().menuItem.name}}">
+					</div>
+					<div class="menu-item-price">{{$ctrl.menuItem.price_small | currency}}<span> {{$ctrl.menuItem.small_portion_name}}</span> {{$ctrl.menuItem.price_large | currency}} <span>{{$ctrl.menuItem.large_portion_name}}</span></div>
+				</div>
+				<div class="menu-item-description col-sm-7">
+					<h3 class="menu-item-title">{{myinfoCtrl.getInfo().menuItem.name}}</h3>
+					<p class="menu-item-details">{{myinfoCtrl.getInfo().menuItem.description}}</p>
+				</div>
+			</div>
+			<hr class="visible-xs">
+		</div>
+  </div>
+	
+	<div ng-show="!myinfoCtrl.isSaved()" class="text-center">
+		<div>Not Signed Up Yet.</div>
+		
+		<a ui-sref="public.signup">Sign up Now!</a>
+	</div>
+</div>

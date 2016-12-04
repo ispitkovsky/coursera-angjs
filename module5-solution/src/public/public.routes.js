@@ -45,17 +45,13 @@ function routeConfig ($stateProvider) {
       url: '/signup',
       templateUrl: 'src/public/signup/signup.html',
       controller: 'SignupController',
-      controllerAs: 'signupCtrl',
-      resolve: 
-			{
-        // signupParams: ['$stateParams','SignupService', function ($stateParams, SignupService) {
-          // return SignUpService.getParams($stateParams);
-        // }],
-        isSigned: ['$stateParams','SignupService', function ($stateParams, SignupService) {
-          return SignupService.isSigned();
-        }]
-			},
-		
+      controllerAs: 'signupCtrl'	
+    })
+    .state('public.myinfo', {
+      url: '/myinfo',
+      templateUrl: 'src/public/myinfo/myinfo.html',
+      controller: 'MyinfoController',
+      controllerAs: 'myinfoCtrl'	
     })
 		;
 }
